@@ -15,7 +15,7 @@ export default {
   props: ["car"],
   methods: {
     editCarSendEvent() {
-      EventBus.$emit('edit-car');
+      EventBus.$emit('edit-car', car);
     }
   }
 }
