@@ -15,11 +15,10 @@ export default {
   name: "CarItem",
   props: ["car"],
   data: {
+    show: true
   },
   methods: {
-      isActive() {
-        this.show = true;
-      }
+      
   }
 }
 </script>
