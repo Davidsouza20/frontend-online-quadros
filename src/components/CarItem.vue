@@ -2,17 +2,21 @@
   <div class="todo-item">
     <p>{{car.marca}}, {{car.modelo}}, {{car.year}}
       <button @click="$emit('del-car', car.id)" class="btn btn-danger btn-sm pull-right margin red">x</button>
-      <button @click="$emit('edit-car',car)" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
+      <button @click="editCarSendEvent" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
       </p>  
   </div>
 </template>
                                
 <script>
+//import {bus} from '../main';
+
 export default {
   name: "CarItem",
   props: ["car"],
   methods: {
-  
+    editCarSendEvent() {
+      window.eventBus.$emit('edit-car');
+    }
   }
 }
 </script>

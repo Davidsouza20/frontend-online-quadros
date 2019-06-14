@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <AddCar  v-on:add-car="addCar"/>
-    <EditCar v-if="isEdit" v-on:edit-car="editCar"/>
+    <AddCar v-if="!isEdit" v-on:add-car="addCar"/>
+    <EditCar v-if="isEdit" @click="editCar"/>
     <Cars v-bind:cars="cars" v-on:del-car="deleteCar"/>
   </div>
 </template>
+
+
+
 
 <script>
 import Cars from "../components/Cars";
 import AddCar from "../components/AddCar";
 import EditCar from "../components/layout/EditCar";
+//import {bus} from '../main';
 import axios from "axios";
 
 export default {
@@ -21,9 +25,12 @@ export default {
   },
   data() {
     return {
-      cars: []
+      cars: [],
+      isEdit: false
+      
     };
   },
+  
 
   //Ajax calls to the API
   methods: {
@@ -54,7 +61,8 @@ export default {
 
     //Update a car
     editCar() {
-      isEdit = true;
+      this.isEdit = true;
+      alert("test");
     } 
   },
 
@@ -64,7 +72,9 @@ export default {
     axios
       .get("http://localhost:8000/carros")
       .then(res => (this.cars = res.data))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err));    
+
+      window.eventBus.$on('edit-car');
   }
 };
 </script>
