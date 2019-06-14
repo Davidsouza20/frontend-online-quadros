@@ -12,7 +12,7 @@
 <script>
 import Cars from "../components/Cars";
 import AddCar from "../components/AddCar";
-import EditCar from "../components/layout/EditCar";
+import EditCar from "../components/EditCar";
 import {bus} from '../main';
 import axios from "axios";
 
