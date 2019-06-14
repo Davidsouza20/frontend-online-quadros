@@ -4,7 +4,9 @@
       <button @click="$emit('del-car', car.id)" class="btn btn-danger btn-sm pull-right margin red">x</button>
       <button @click="isActive" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
       </p>  
-      <EditCar v-show="ok"/>
+      <div  v-show="ok">
+      <EditCar/>
+      </div>
   </div>
 </template>
                                
