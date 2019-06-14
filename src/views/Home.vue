@@ -13,7 +13,7 @@
 import Cars from "../components/Cars";
 import AddCar from "../components/AddCar";
 import EditCar from "../components/EditCar";
-import EventBus from '../event-bus';
+//import EventBus from '../event-bus';
 import axios from "axios";
 
 export default {
@@ -69,9 +69,7 @@ export default {
       .then(res => (this.cars = res.data))
       .catch(err => console.log(err));    
     //this.EventBus.$on('edit-car', {});
-    this.EventBus.$on('edit-car', function () {
-        alert("test");
-    });
+   
   }
 };
 </script>

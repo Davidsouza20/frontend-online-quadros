@@ -2,21 +2,25 @@
   <div class="todo-item">
     <p>{{car.marca}}, {{car.modelo}}, {{car.year}}
       <button @click="$emit('del-car', car.id)" class="btn btn-danger btn-sm pull-right margin red">x</button>
-      <button @click="editCarSendEvent" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
+      <button @click="isActive" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
       </p>  
+      <EditCar v-if="show"/>
   </div>
 </template>
                                
 <script>
-import EventBus from '../event-bus';
-
+//import EventBus from '../event-bus';
+import EditCar from '../components/EditCar'
 export default {
   name: "CarItem",
   props: ["car"],
+  data: {
+    show: false
+  },
   methods: {
-    editCarSendEvent() {
-      this.EventBus.$emit('edit-car', {});
-    }
+      isActive() {
+        show = true;
+      }
   }
 }
 </script>
