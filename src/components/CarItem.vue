@@ -8,14 +8,14 @@
 </template>
                                
 <script>
-//import {bus} from '../main';
+import {bus} from '../main';
 
 export default {
   name: "CarItem",
   props: ["car"],
   methods: {
     editCarSendEvent() {
-      window.eventBus.$emit('edit-car');
+      bus.$emit('edit-car');
     }
   }
 }

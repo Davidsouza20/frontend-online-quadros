@@ -4,7 +4,7 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-window.eventBus = new Vue();
+bus = new Vue();
 
 new Vue({
   render: h => h(App)

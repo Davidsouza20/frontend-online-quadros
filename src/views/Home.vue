@@ -13,7 +13,7 @@
 import Cars from "../components/Cars";
 import AddCar from "../components/AddCar";
 import EditCar from "../components/layout/EditCar";
-//import {bus} from '../main';
+import {bus} from '../main';
 import axios from "axios";
 
 export default {
@@ -34,18 +34,13 @@ export default {
 
   //Ajax calls to the API
   methods: {
-    //Delete a Car
-    deleteCar(id, i) {
-      axios
-        .delete(`http://localhost:8000/carros/${id}`)
-        .then(res => {
-          this.cars.splice(i, 1);
-        })
 
-        /*this.cars = this.cars.filter(car => car.id !== id))*/
+    deleteCar(id, i) {
+      axios.delete(`http://localhost:8000/carros/${id}`)
+        .then(res => {this.cars.splice(i, 1);})
         .catch(err => console.log(err));
     },
-    //Add a Car
+ 
     addCar(newCar) {
       const data = Object.entries(newCar)
         .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
@@ -59,7 +54,7 @@ export default {
       
     },
 
-    //Update a car
+
     editCar() {
       this.isEdit = true;
       alert("test");
@@ -68,13 +63,12 @@ export default {
 
   //Display the list of Cars
   created() {
-    //get the cars
+
     axios
       .get("http://localhost:8000/carros")
       .then(res => (this.cars = res.data))
       .catch(err => console.log(err));    
-
-      window.eventBus.$on('edit-car');
+    bus.$on('edit-car');
   }
 };
 </script>
