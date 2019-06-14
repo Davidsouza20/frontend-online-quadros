@@ -19,7 +19,7 @@ export default {
   },
   methods: {
       isActive() {
-        show = true;
+        this.show = true;
       }
   }
 }
