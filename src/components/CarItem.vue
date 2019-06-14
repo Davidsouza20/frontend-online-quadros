@@ -20,7 +20,7 @@ export default {
   name: "CarItem",
   props: ["car"],
   data: {
-     ok: true
+     ok: false
   },
   methods: {
   
