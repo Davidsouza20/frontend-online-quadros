@@ -16,11 +16,14 @@ export default {
     EditCar
   },
   name: "CarItem",
-  props: ["car"],
+  props: ["car", "show"],
   data: {
-    show: true
+
   },
   methods: {
+    isActive() {
+      this.show = false;
+    }
       
   }
 }
