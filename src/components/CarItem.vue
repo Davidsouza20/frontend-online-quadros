@@ -2,7 +2,7 @@
   <div class="todo-item">
     <p>{{car.marca}}, {{car.modelo}}, {{car.year}}
       <button @click="$emit('del-car', car.id)" class="btn btn-danger btn-sm pull-right margin red">x</button>
-      <button @click="EventBus.$emit('edit-car', car)" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
+      <button @click="editCarSendEvent" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
       </p>  
   </div>
 </template>
@@ -14,7 +14,9 @@ export default {
   name: "CarItem",
   props: ["car"],
   methods: {
-    
+    editCarSendEvent() {
+      this.EventBus.$emit('edit-car', {});
+    }
   }
 }
 </script>
