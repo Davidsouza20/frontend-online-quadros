@@ -15,7 +15,6 @@ export default {
   name: "CarItem",
   props: ["car"],
   data: {
-    show: false
   },
   methods: {
       isActive() {
