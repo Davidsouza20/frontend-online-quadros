@@ -16,9 +16,9 @@ export default {
     EditCar
   },
   name: "CarItem",
-  props: ["car", "show"],
+  props: ["car"],
   data: {
-
+      show: true
   },
   methods: {
     isActive() {
