@@ -12,6 +12,9 @@
 //import EventBus from '../event-bus';
 import EditCar from '../components/EditCar'
 export default {
+  components: {
+    EditCar
+  },
   name: "CarItem",
   props: ["car"],
   data: {
