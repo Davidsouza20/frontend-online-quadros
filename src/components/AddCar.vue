@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Adicionar um carro</h3><br>
-    <form class="form-group align-content-center" @submit.prevent="addCar">
+    <form  class="form-group align-content-center" @submit.prevent="addCar">
       <label for="">Escolha a marca</label>
       <select class="form-control" v-model="marca">
         <option :value="brand.marca" :key="brand.id" v-for="brand in brands">{{brand.marca}}</option>

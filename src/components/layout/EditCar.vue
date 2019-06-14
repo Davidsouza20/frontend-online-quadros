@@ -1,70 +1,63 @@
 <template>
-   <!-- The Modal -->
-<div v-if="show" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <AddCar />
+  <div>
+    <h3>Editar um carro</h3><br>
+    <form  class="form-group align-content-center" @submit.prevent="editCar">
+      <label for="">Escolha a marca</label>
+      <select class="form-control" v-model="marca">
+        <option :value="brand.marca" :key="brand.id" v-for="brand in brands">{{brand.marca}}</option>
+      </select><br>
+      <input class="form-control" type="text" v-model="modelo" name="title" placeholder="Modelo"><br>
+      <input class="form-control" type="text" v-model="year" name="title" placeholder="Ano"><br>
+      <input type="submit" value="Editar" class="btn">
+    </form>
   </div>
-
-</div> 
 </template>
 
-
 <script>
-
-import AddCar from './AddCar.vue';
+import axios from 'axios';
 export default {
-    components: {
-        AddCar
-    },
-    data: {
-    
-    },
-    methods: {
+  name: "EditCar",
+  data() {
+    return {
+        //id: "",
+        marca: "",
+        modelo: "",
+        year: "",
+        brands: []
+        } 
+  },
+  methods: {
+    editCar(e) {
+      e.preventDefault();
+      const newCar = {
+        //id: this.id,
+        marca: this.marca,
+        modelo: this.modelo,
+        year: this.year,
+      }
+      // Send up to parent
+      this.$emit('edit-car', newCar);
 
-    }
-}
+      this.marca = ""
+      this.modelo = ""
+      this.year = ""
+    },
+    },
+    mounted() {
+     //get the brands 
+      axios.get('https://my-json-server.typicode.com/davidsouza20/api1/brand')
+      .then(res => this.brands = res.data)
+      
+      .catch(err => console.log(err));
+  }
+ 
+  }
 </script>
-
 <style scoped>
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+  div {
+    padding: 30px;
+  }
 </style>
+
+
 

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <AddCar v-on:add-car="addCar"/>
+    <AddCar  v-on:add-car="addCar"/>
+    <EditCar v-if="isEdit" v-on:edit-car="editCar"/>
     <Cars v-bind:cars="cars" v-on:del-car="deleteCar"/>
   </div>
 </template>
@@ -8,13 +9,15 @@
 <script>
 import Cars from "../components/Cars";
 import AddCar from "../components/AddCar";
+import EditCar from "../components/layout/EditCar";
 import axios from "axios";
 
 export default {
   name: "Home",
   components: {
     Cars,
-    AddCar
+    AddCar,
+    EditCar
   },
   data() {
     return {
@@ -50,7 +53,9 @@ export default {
     },
 
     //Update a car
-    updateCar() {}
+    editCar() {
+      isEdit = true;
+    } 
   },
 
   //Display the list of Cars
