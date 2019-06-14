@@ -68,7 +68,10 @@ export default {
       .get("http://localhost:8000/carros")
       .then(res => (this.cars = res.data))
       .catch(err => console.log(err));    
-    this.EventBus.$on('edit-car');
+    //this.EventBus.$on('edit-car', {});
+    this.EventBus.$on('edit-car', function () {
+        alert("test");
+    });
   }
 };
 </script>
