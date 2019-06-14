@@ -18,7 +18,7 @@ export default {
   name: "CarItem",
   props: ["car"],
   data: {
-     ok: false;
+     ok: false
   },
   methods: {
   
