@@ -1,53 +1,21 @@
-Teste para desenvolvedor da Online Quadros
-==============================
+﻿Olá 
 
-Olá candidato,
+Para iniciar esta web app 
 
-Esse teste consiste em 2 etapas para avaliarmos seu conhecimento em PHP e Front-End (HTML5, CSS e JavaScript)
+1 faça um clone do repositório.
+2  "npm install".
+3  "npm update". 
+4  "npm run serve.
 
-Para realizar o teste, você deve dar um fork neste repositório e depois clona-lo na pasta <document_root> da máquina que está realizando o teste.
+Caso não consiga rodar o app devido a erros relacionados a dependencias e variaveis de ambiente acesse o link 
 
-Crie um branch com seu nome, e quando finalizar todo o desenvolvimento, você deverá enviar um pull-request com sua versão.
+https://frontend-online-quadros.herokuapp.com/
 
-O teste
---------
+Para que a pagina funciona corretamente também será necessário configurar a miniAPI 
 
-### Back-End/PHP
-
-A primeira etapa será o desenvolvimento **backend/PHP**:
-
-**Descrição:**
-
-- Você deverá desenvolver uma 'mini api' para que seja possível realizar operações CRUD do objeto Carro.
-> **Obs:**
-> - Você pode usar arquivo (txt, json) como banco de dados, mas o recomendado seria utilizar MYSQL ou SQLite 
-> - Cada carro deve ter ID, Marca, Modelo, Ano.
-
-Sugerimos o retorno dessa 'mini api' nas seguinte urls:
-
- - `/carros` - [GET] deve retornar todos os carros cadastrados.
- - `/carros` - [POST] deve cadastrar um novo carro.
- - `/carros/{id}`[GET] deve retornar o carro com ID especificado.
- - `/carros/{id}`[PUT] deve atualizar os dados do carro com ID especificado.
- - `/carros/{id}`[DELETE] deve apagar o carro com ID especificado.
-
-### Front-End
-
-Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Application) e nela deve ser possível:
-
-- Ver a lista de carros cadastrados
-- Criar um novo carro
-- Editar um carro existente
-- Apagar um carro existente
-
-> **Obs:**
-> - A página deve ser responsiva.
-> - A página deve funcionar 100% via AJAX, sem outros carregamentos de páginas.
-> - Ao criar/editar um carro, o campo "marca" deverá ser um `SELECT`
-
-### Observações importantes:
-
-- Utilize o Framework Laravel 4.2 para desenvolver o Backend
-- Você pode usar ferramentas de automação (Grunt, Gulp), mas deverá informar o uso completo para funcionamento do teste.
-- Será considerado ponto positivo no teste a utilização de orientação a objetos, design patterns e rotinas para testes.
-- Será considerado ponto positivo o tempo gasto na realização do teste. Menos tempo e tudo funcionando conforme pedido será melhor avaliado.
+1 faça um clone do repositório 
+2  "php artisan composer install"
+3  É necessário ter um banco de dados MySql chamado carros.
+4 "php artisan migrate" 
+5 "php artisan serve" 
+ 
