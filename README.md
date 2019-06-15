@@ -2,7 +2,7 @@
 
 Para iniciar esta web app 
 
-1 faça um clone do repositório.
+1 faça um clone do repositório frontend.
 2  "npm install".
 3  "npm update". 
 4  "npm run serve.
@@ -13,7 +13,7 @@ https://frontend-online-quadros.herokuapp.com/
 
 Para que a pagina funciona corretamente também será necessário configurar a miniAPI 
 
-1 faça um clone do repositório 
+1 faça um clone do repositório backend 
 2  "php artisan composer install"
 3  É necessário ter um banco de dados MySql chamado carros.
 4 "php artisan migrate" 
