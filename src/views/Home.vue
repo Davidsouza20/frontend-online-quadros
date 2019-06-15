@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <AddCar v-if="!isEdit" v-on:add-car="addCar"/>
-    <EditCar v-if="isEdit" @click="editCar"/>
-    <Cars v-bind:cars="cars" v-on:del-car="deleteCar"/>
+    <Cars v-bind:cars="cars" v-on:del-car="deleteCar" />
   </div>
 </template>
 
@@ -13,7 +12,7 @@
 import Cars from "../components/Cars";
 import AddCar from "../components/AddCar";
 import EditCar from "../components/EditCar";
-//import EventBus from '../event-bus';
+import EventBus from '../event-bus';
 import axios from "axios";
 
 export default {
@@ -34,7 +33,6 @@ export default {
 
   //Ajax calls to the API
   methods: {
-
     deleteCar(id, i) {
       axios.delete(`http://localhost:8000/carros/${id}`)
         .then(res => {this.cars.splice(i, 1);})
@@ -70,6 +68,10 @@ export default {
       .catch(err => console.log(err));    
     //this.EventBus.$on('edit-car', {});
    
+  },
+  mounted() {
+      //EventBus.$on('updated-cars', (updatedCar) => {
+         // alert("car Updated");})
   }
 };
 </script>

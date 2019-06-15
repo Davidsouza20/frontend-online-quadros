@@ -1,14 +1,14 @@
 <template>
   <div>
     <h3>Editar um carro</h3><br>
-    <form  class="form-group align-content-center" @submit.prevent="editCar">
+    <form v-bind:car="car" class="form-group align-content-center" @submit.prevent="editCar">
       <label for="">Escolha a marca</label>
       <select class="form-control" v-model="marca">
         <option :value="brand.marca" :key="brand.id" v-for="brand in brands">{{brand.marca}}</option>
       </select><br>
       <input class="form-control" type="text" v-model="modelo" name="title" placeholder="Modelo"><br>
       <input class="form-control" type="text" v-model="year" name="title" placeholder="Ano"><br>
-      <input type="submit" value="Editar" class="btn">
+      <input  type="submit" value="Editar" class="btn">
     </form>
   </div>
 </template>
@@ -17,6 +17,7 @@
 import axios from 'axios';
 export default {
   name: "EditCar",
+  props: ["car"],
   data() {
     return {
         //id: "",
@@ -35,8 +36,9 @@ export default {
         modelo: this.modelo,
         year: this.year,
       }
+
       // Send up to parent
-      this.$emit('edit-car', newCar);
+      this.$emit('edited-car', newCar);
 
       this.marca = ""
       this.modelo = ""

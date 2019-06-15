@@ -5,20 +5,21 @@
       <button @click="isActive" class="btn btn-warning btn-sm pull-right margin yellow">Edit</button>
       </p>  
       <span v-if="show">
-      <EditCar/>
+      <EditCar @edited-car="updateCar" />
       </span>
   </div>
 </template>
                                
 <script>
-//import EventBus from '../event-bus';
+import EventBus from '../event-bus';
 import EditCar from '../components/EditCar'
-
+import axios from "axios";
 
 export default {
   data: function() {
     return {
-      show: false
+      show: false,
+        carros: []
     }
   },  
   components: {
@@ -28,6 +29,20 @@ export default {
   props: ["car"],
 
   methods: {
+    updateCar(newCar) {
+       const data = Object.entries(newCar)
+        .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
+        .join("&");
+
+        const options = {
+          headers: { "content-type": "application/x-www-form-urlencoded" },};
+      axios.put(`http://localhost:8000/carros/${this.car.id}`, data, options)
+          .then(res => this.carros.push(res.data.response))
+          .catch(err => console.log(err));
+
+          //this.$emit('edited-car', this.carros);
+          this.show = false;
+    },
     isActive() {
       this.show = !this.show
     }
