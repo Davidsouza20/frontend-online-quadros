@@ -2,6 +2,7 @@
 
 Para iniciar esta web app 
 
+=====================================================================
 
 1 faça um clone do repositório frontend.
 
@@ -12,12 +13,22 @@ Para iniciar esta web app
 4  "npm run serve.
 
 
+=====================================================================
+
+
+
 
 
 Caso não consiga rodar o app devido a erros relacionados a dependencias e variaveis de ambiente acesse o link 
 
 
 https://frontend-online-quadros.herokuapp.com/
+
+
+=======================================================================
+
+
+
 
 
 
