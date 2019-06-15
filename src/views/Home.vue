@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AddCar v-if="!isEdit" v-on:add-car="addCar"/>
-    <Cars v-bind:cars="cars" v-on:del-car="deleteCar" />
+    <Cars v-bind:cars="cars" v-on:del-car="deleteCar" @car="editCar" />
   </div>
 </template>
 
@@ -53,14 +53,37 @@ export default {
     },
 
 
-    editCar() {
-      this.isEdit = true;
-      alert("test");
+    editCar(newCar, id) {
+      
+       const data = Object.entries(newCar)
+        .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
+        .join("&");
+
+        const options = {
+          headers: { "content-type": "application/x-www-form-urlencoded" },};
+      axios.put(`http://localhost:8000/carros/${id}`, data, options)
+          .then(res => this.cars.splice(id, 0, res.data))
+          .catch(err => console.log(err));
+
+        //this.cars.splice(id, 1);
+
+      
+      console.log(newCar);
     } 
   },
 
   //Display the list of Cars
   created() {
+
+    axios
+      .get("http://localhost:8000/carros")
+      .then(res => (this.cars = res.data))
+      .catch(err => console.log(err));    
+    //this.EventBus.$on('edit-car', {});
+   
+  },
+
+  updated() {
 
     axios
       .get("http://localhost:8000/carros")

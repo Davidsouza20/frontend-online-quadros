@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-bind:key="car.id" v-for="(car, i) in cars" @carEdited="test">
-      <CarItem v-bind:car="car" v-on:del-car="$emit('del-car', car.id, i)" @edited-car="test"/>
+      <CarItem v-bind:car="car" v-on:del-car="$emit('del-car', car.id, i)" @car="test"/>
     </div>
   </div>
 </template>
@@ -20,8 +20,9 @@ export default {
   },
   props: ["cars"], 
   methods: {
-    test(editedCar) {
-      alert(editedCar);
+    test(newCar, id) {
+      console.log(newCar, id);
+      this.$emit('car', newCar, id);
     }
   }
 }

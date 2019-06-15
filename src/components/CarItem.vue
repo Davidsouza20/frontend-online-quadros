@@ -30,18 +30,9 @@ export default {
 
   methods: {
     updateCar(newCar) {
-       const data = Object.entries(newCar)
-        .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
-        .join("&");
-
-        const options = {
-          headers: { "content-type": "application/x-www-form-urlencoded" },};
-      axios.put(`http://localhost:8000/carros/${this.car.id}`, data, options)
-          .then(res => this.carros.push(res.data.response))
-          .catch(err => console.log(err));
-
-          //this.$emit('edited-car', this.carros);
-          this.show = false;
+      const id =  this.car.id;
+      this.$emit('car', newCar, id);
+      this.show = false;
     },
     isActive() {
       this.show = !this.show
