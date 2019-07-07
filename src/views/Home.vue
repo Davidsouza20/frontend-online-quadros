@@ -78,7 +78,9 @@ export default {
     axios
       .get("https://project-nodejs-2.herokuapp.com/cars")
       .then(res => (this.cars = res.data))
-      .catch(err => console.log(err));    
+      .catch(err => console.log(err));  
+      console.log(this.cars);  
+      console.log(res.data);  
    
   },
 
