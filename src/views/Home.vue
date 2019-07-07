@@ -77,9 +77,10 @@ export default {
 
     axios
       .get("https://project-nodejs-2.herokuapp.com/cars")
-      .then(res => (this.cars = res.data))
+      .then(res => (console.log(res.data)))
+        
+        //this.cars = res.data))
       .catch(err => console.log(err));    
-    //this.EventBus.$on('edit-car', {});
    
   },
 
