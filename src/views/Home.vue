@@ -76,7 +76,7 @@ export default {
   created() {
 
     axios
-      .get("http://localhost:8000/carros")
+      .get("https://project-nodejs-2.herokuapp.com/cars")
       .then(res => (this.cars = res.data))
       .catch(err => console.log(err));    
     //this.EventBus.$on('edit-car', {});
